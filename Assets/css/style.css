@@ -1,0 +1,84 @@
+*{
+    box-sizing: content-box; /*el padding no afecta al ancho */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+:root {
+    --colorDeFondo:rgb(231, 231, 231, 1.0);
+    --radio: 25px;
+    --colorDePresentes:green;
+    --colorDeAusentes:red;
+    --colorDeFooter:black;
+    --colorDeParrafo:black;
+    --colorDeParrafoAlternativo: white;
+
+}
+/*  Auxiliares */
+.grid-2
+{
+    grid-template-columns: repeat(2, 50%); /* repite '50%' dos veces */
+    display: grid;
+}
+/*   */
+body{
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    background: var(--colorDeFondo);
+
+}
+.menu {
+    border-radius: var(--radio);
+    background: red;
+    grid-row: 2; /* grid row sirve para espesificar en que fila va el objeto */
+}
+a:hover {
+
+}
+header{
+    display: grid;
+    grid-template-columns: 32px auto;
+    grid-template-rows: 10px 32px 10px;
+}
+
+header h1{
+    text-align: center;
+    font-size: 32px;
+    line-height: 30px;
+    grid-row: 2;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start:0;
+    margin-inline-end: 0;
+}
+main {
+    margin-top: 20px;
+    width: 100%;
+}
+#presentismo{
+    width: 100%;
+    height: 32px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 32px;
+    display: grid; /* elemental watson */
+}
+
+#presentismo #presentes{
+    background: var(--colorDePresentes);
+}
+
+#presentismo #ausentes{
+    background:var(--colorDeAusentes);
+}
+#presentismo #presentes p, #presentismo #ausentes p {
+    color: var(--colorDeParrafoAlternativo);
+    text-align: center;
+    /* padding: 5px; */
+    font-size: 17px;
+    line-height: 0; /* establece el espaciado entre renglón y renglón */
+}
+
+footer{
+    background: var(--colorDeFooter);
+    grid-template-rows: 10px 32px 10px; /* grilla de dos columnas definida como auxiliar */
+}
