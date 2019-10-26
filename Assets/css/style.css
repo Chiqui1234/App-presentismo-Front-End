@@ -1,61 +1,120 @@
-*{
-    box-sizing: content-box; /*el padding no afecta al ancho */
+*
+{
+    box-sizing: border-box; /* el padding no afecta al ancho */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    transition: left 1s, color .5s;
 }
-:root {
-    --colorDeFondo:rgb(231, 231, 231, 1.0);
-    --radio: 25px;
-    --colorDePresentes:green;
-    --colorDeAusentes:red;
-    --colorDeFooter:black;
-    --colorDeParrafo:black;
-    --colorDeParrafoAlternativo: white;
+:root
+{
+    --colorDeLink               : rgb(45, 123, 224);
+    --colorDeLinkHover          : rgb(36, 195, 243);
+    --colorDeHeader             : rgba(187, 225, 228, 0.9);
+    --separacion                : 10px;
+    --radio                     : 25px;
+    --colorDePresentes          :rgb(82, 192, 31);
+    --colorDeAusentes           :rgb(247, 56, 56);
+    --colorDeFooter             :rgb(37, 41, 44);
+    --colorDeParrafo            :rgb(27, 27, 27);
+    --colorDeParrafoAlternativo :rgb(236, 236, 236);
+    --colorDeFondo              :rgb(245, 245, 245);
 
 }
 /*  Auxiliares */
 .grid-2
 {
-    grid-template-columns: repeat(2, 50%); /* repite '50%' dos veces */
+    grid-template-columns: repeat(2, 1fr); /* repite '50%' dos veces */
     display: grid;
 }
+.grid-4 
+{
+    grid-template-columns: repeat(4, 1fr);
+}
+.gap
+{
+    gap: var(--separacion);
+}
+.text-right
+{
+    text-align: right;
+}
+.padding
+{
+    padding: var(--separacion);
+}
 /*   */
-body{
+body
+{
     margin: 0;
     overflow-x: hidden;
     padding: 0;
     background: var(--colorDeFondo);
-
 }
-.menu {
-    border-radius: var(--radio);
-    background: red;
-    grid-row: 2; /* grid row sirve para espesificar en que fila va el objeto */
+a 
+{
+    color: var(--colorDeLink);
 }
-a:hover {
-
+a:hover 
+{
+    color: var(--colorDeLinkHover);
 }
-header{
+/*  */
+header, footer {width: 100%;position: fixed;left: 0;} /* Propiedades que fixean el objeto */
+header
+{
+    top: 0;
     display: grid;
     grid-template-columns: 32px auto;
     grid-template-rows: 10px 32px 10px;
+    background: var(--colorDeHeader);
+    z-index: 100;
 }
+    header a /* Aplica al .menu */
+    {
+        text-decoration: none;
+        color: var(--colorDeFooter);
+    }
+    header .menu 
+    {
+        line-height: 32px; /* Para centrarlo verticalmente */
+        font-size: 22px;
+        text-align: center;
+        border-radius: var(--radio);
+        grid-row: 2; /* grid row sirve para especificar en que fila va el objeto */
+        cursor: pointer;
+    }
+    header h1
+    {
+        text-align: center;
+        font-size: 32px;
+        line-height: 30px;
+        grid-row: 2;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start:0;
+        margin-inline-end: 0;
+    }
 
-header h1{
-    text-align: center;
-    font-size: 32px;
-    line-height: 30px;
-    grid-row: 2;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start:0;
-    margin-inline-end: 0;
+#sidebar
+{
+    width: 50vw;
+    height: 100vh;
+    top: 52px;
+    left: -50vw;
+    background: var(--colorDeHeader);
+    position: fixed;
+    z-index: 99;
 }
-main {
-    margin-top: 20px;
-    width: 100%;
+    #sidebar:target
+    {
+        left: 0;
+    }
+main 
+{
+    margin: 72px auto;
+    width: 70%;
 }
-#presentismo{
+#presentismo
+{
     width: 100%;
     height: 32px;
     grid-template-columns: 50% 50%;
@@ -63,22 +122,79 @@ main {
     display: grid; /* elemental watson */
 }
 
-#presentismo #presentes{
+#presentismo #presentes
+{
     background: var(--colorDePresentes);
 }
 
-#presentismo #ausentes{
+#presentismo #ausentes
+{
     background:var(--colorDeAusentes);
 }
-#presentismo #presentes p, #presentismo #ausentes p {
+#presentismo #presentes p, #presentismo #ausentes p 
+{
     color: var(--colorDeParrafoAlternativo);
     text-align: center;
     /* padding: 5px; */
-    font-size: 17px;
+    font-size: 16px;
     line-height: 0; /* establece el espaciado entre renglón y renglón */
+    cursor: default;
 }
 
-footer{
+footer
+{
+    bottom: 0;
     background: var(--colorDeFooter);
-    grid-template-rows: 10px 32px 10px; /* grilla de dos columnas definida como auxiliar */
+    color: var(--colorDeParrafoAlternativo);
+}
+/* Responsive */
+@media (max-width: 1279px) { /* Entre 1024px y 1279px (tablets) */
+    .grid-2
+    {
+        grid-template-columns: 1fr;
+    }
+    .grid-4 
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    main 
+    {
+        width: 95%;
+    }
+    #sidebar
+    {
+        width: 75vw;
+        left: -75vw;
+    }
+    footer 
+    {
+        text-align: center;
+    }
+    .text-right
+    {
+        text-align: center;
+    }
+}
+@media (max-width: 1023px) { /* 1023px o menor */
+    .grid-2, .grid-4 
+    {
+        grid-template-columns: 1fr;
+    }
+    main 
+    {
+        width: 95%;
+    }
+    #sidebar
+    {
+        width: 75vw;
+        left: -75vw;
+    }
+    footer 
+    {
+        text-align: center;
+    }
+    .text-right
+    {
+        text-align: center;
+    }
 }

@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Asistencias UTN</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dominacion Mundial</title>
-    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 </head>
 <body>
     <header>
-        <div class="menu">
-            
-        </div>
-        <h1>Dominación Mundial</h1>
-
+        <a href="#sidebar" class="menu"> <!-- Link que ocupa toda la caja, ver CSS -->
+            <i class="fas fa-bars"></i>
+        </a>
+        <h1>Asistencias UTN</h1>
     </header>
+
     <main>
-        <div id="presentismo"> <!-- esto es una grilla dinámica -->
-            <div id="presentes">
-                <p>20</p>
+        <div class="grid-2 gap"> <!-- grid-2 -->
+            <div class="alumno">
+                <img src="https://www.autobild.es/sites/autobild.es/public/dc/fotos/Nissan-370Z_Nismo-2015-C01.jpg" width="100%" />
+                <div id="presentismo"> <!-- Presentismo. Esto es una grilla dinámica -->
+                    <div id="presentes"> <!-- Objeto/Barra de "presentes" -->
+                        <p>20</p>
+                    </div> <!-- !Objeto/Barra de "presentes" -->
+                    <div id="ausentes"> <!-- Objeto/Barra de "ausentes" -->
+                        <p>20</p>
+                    </div> <!-- !Objeto/Barra de "ausentes" -->
+                </div> <!-- !Presentismo-->
+            </div> <!-- !alumno -->
+            <div class="alumnoInfo">
+                <h2>Chiqui Gimenez</h2>
+                <p>18 materias para terminar la carrera</p>
             </div>
-            <div id="ausentes">
-                <p>20</p>
-            </div>
-        </div>
+        </div> <!-- !grid-2 -->
+        
     </main>
-    <footer class="grid-2">
+
+    <div id="sidebar" class="padding">
         <div class="grid-2">
-            <div>.</div>
-            <div><p>Presente</p></div>
+            <h2>Sidebar</h2>
+            <a href="#"><i class="fas fa-window-close" style="font-size: 28px;line-height: 68px;"></i></a>
         </div>
-        <div>
-            <p>Estás en la UTN</p>
-        </div>
-    </footer>
+        
+    </div>
+
+    <footer class="grid-2 padding"> <!-- Footer -->
+        <p><i id="estadoIcono" class="fas fa-dot-circle"></i> <span id="estadoTexto">Presente</span>, <span id="estadoClase">clase en curso</span></p>
+
+        <p class="text-right">Estás en la UTN, Wi-Fi "<strong>WIFI MVL</strong>" <i class="fas fa-laptop"></i></p>
+    </footer> <!-- !Footer -->
+    <script src="assets/js/presentismo.js"></script>
+    <script>obtenerPresente('presentismo', 'presentes', 'ausentes');</script>
 </body>
 </html>
